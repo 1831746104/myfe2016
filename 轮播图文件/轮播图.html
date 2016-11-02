@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 673px;
+            height: 465px;
+            margin: 100px auto;
+            position: relative;
+        }
+        #content img{
+            display: none;
+            width: 673px;
+            height: 465px;
+        }
+        #content img.selected{
+            display: block;
+        }
+        #tab{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        #tab li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #000;
+            color: #fff;
+            cursor: pointer;/*鼠标放上面是小手*/
+            margin-right: 5px;
+            line-height: 20px;
+            text-align: center;
+        }
+        #tab li.selected{
+            background: orange;
+        }
+        #arrow{
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+        #arrow span{
+            width: 20px;
+            height: 20px;
+            background: #000;
+            float: left;
+            color: #fff;
+            margin-right: 5px;
+            line-height: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="content">
+            <img class="selected" src="图片/花花1.jpeg"/>
+            <img src="图片/花花2.jpg"/>
+            <img src="图片/花花3.jpg"/>
+            <img src="图片/花花4.jpg"/>
+        </div>
+        <ul id="tab">
+            <li class="selected">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div id="arrow">
+            <span>&lt;</span><!--实体字符  小于号-->
+            <span>&gt;</span><!--实体字符  大于号-->
+        </div>
+    </div>
+    <script>
+        var oContainer = document.getElementById('container');
+        var aLi = oContainer.getElementsByTagName('li');
+        var aImg = oContainer.getElementsByTagName('img');
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].index = i;
+            aLi[i].onmouseover = function(){
+                for(var j=0;j<aLi.length;j++){
+                    aLi[j].className='';
+                    aImg[j].className='';
+                }
+                this.className = 'selected';
+                aImg[this.index].className = 'selected';
+            }
+        }
+    </script>
+</body>
+</html>
